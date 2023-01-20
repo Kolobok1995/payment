@@ -1,0 +1,40 @@
+version: '3.1'
+
+services:
+  payment-php-cli:
+    build: ./docker/php-cli
+    volumes:
+      - .:/var/www/html
+      
+  payment-php-fpm:
+    build: ./docker/php
+    volumes:
+      - .:/var/www/html
+
+  payment-nginx:
+    image: nginx:latest
+    ports:
+      - 8040:80
+    volumes:
+      - .:/var/www/html
+      - ./docker/nginx/conf.d:/etc/nginx/conf.d
+
+  payment-db:
+    image: mariadb:10.6
+    restart: always
+    ports:
+      - 33091:3306
+    environment:
+      MYSQL_DATABASE: payment
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: admin
+      MYSQL_ROOT_PASSWORD: admin
+    volumes:
+      - ~/ecosystem/lib_mysql/payment-db/:/var/lib/mysql
+
+  payment-composer:
+    image: composer:latest
+    volumes:
+      - .:/var/www/html
+    working_dir: /var/www/html
+    command: composer update
