@@ -29,6 +29,15 @@ class RouteServiceProvider extends ServiceProvider
     public const LOGIN = '/login';
 
     /**
+     * The path to the "login" route for your application.
+     *
+     * Typically, users are redirected here after authentication.
+     *
+     * @var string
+     */
+    public const ADMIN = '/admin/payments';
+
+    /**
      * Define your route model bindings, pattern filters, and other route configuration.
      *
      * @return void
@@ -44,6 +53,9 @@ class RouteServiceProvider extends ServiceProvider
 
             Route::middleware('web')
                 ->group(base_path('routes/web.php'));
+                
+            Route::middleware('admin')
+                ->group(base_path('routes/admin.php'));
         });
     }
 

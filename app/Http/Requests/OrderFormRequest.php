@@ -34,7 +34,7 @@ class OrderFormRequest extends FormRequest
         return [
             'phone'     => 'required',
             'name'     => 'max:30|regex:/^[А-ЯЁ][а-яё][[:print:]]*$/ui|nullable',
-            "email"     => 'email|nullable'
+            "email"     => 'email|required'
         ];
     }
 

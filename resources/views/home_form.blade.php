@@ -7,7 +7,7 @@
 </div>
 @endif
 
-<form action="/order" method="get">
+<form action="/order" method="post">
     <div class="row form-row" style="">
         <div class="col-md-12 mb-3">
             <div class="form-group">

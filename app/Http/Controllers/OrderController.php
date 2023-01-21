@@ -35,8 +35,8 @@ class OrderController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function actionCreatedOrder(OrderFormRequest $request)
+    public function actionCreatedOrder(Request $request)
     {
-        return "Ура";
+        return view('orders.successful_order');
     }
 }
