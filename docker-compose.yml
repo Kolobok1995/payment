@@ -38,3 +38,10 @@ services:
       - .:/var/www/html
     working_dir: /var/www/html
     command: composer update
+
+  payment-node-cli:
+    image: node:19
+    container_name: technostor-node-cli
+    volumes:
+      - .:/var/www/html
+    working_dir: /var/www/html
