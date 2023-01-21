@@ -1,21 +1,30 @@
-<form>
+
+@if ($errors->any())
+<div class="alert alert-danger">
+        @foreach ($errors->all() as $error)
+            <div>{{ $error }}</div>
+        @endforeach
+</div>
+@endif
+
+<form action="/order" method="get">
     <div class="row form-row" style="">
         <div class="col-md-12 mb-3">
             <div class="form-group">
-                <label for="exampleInputEmail1">Телефон</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                <label for="phone">Телефон</label>
+                <input type="text" class="phone form-control" id="phone" name="phone" aria-describedby="emailHelp">
             </div>
         </div>
         <div class="col-md-12 mb-3">
             <div class="form-group">
-                <label for="exampleInputPassword1">Имя</label>
-                <input type="password" class="form-control" id="exampleInputPassword1">
+                <label for="name">Имя</label>
+                <input type="text" class="form-control" id="name" name="name">
             </div>
         </div>
         <div class="col-md-12 mb-3">
             <div class="form-group">
-                <label for="exampleInputPassword1">Email</label>
-                <input type="password" class="form-control" id="exampleInputPassword1">
+                <label for="email">Email</label>
+                <input type="text" class="form-control" id="email" name="email">
             </div>
         </div>
         <div class="col-md-12">
@@ -23,5 +32,14 @@
                 <button type="submit" class="btn btn-primary">Отправить</button>
             </div>
         </div>
+        <input type="hidden" name="_token" value="{{ csrf_token() }}" />
     </div>
 </form>
+
+@section('scripts')
+    <script>
+        $(document).ready(function(){
+            $('.phone').inputmask('+7 (999)-999-99-99');
+        });
+    </script> 
+@endsection
