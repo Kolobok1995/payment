@@ -17,5 +17,6 @@ Auth::routes();
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth'], function () {
     Route::get('/payments', [App\Http\Controllers\Admin\PaymentsController::class, 'actionShowPayments'])->name('payments');
+    Route::get('/payments/{email}', [App\Http\Controllers\Admin\PaymentsController::class, 'actionShowPaymentsMore'])->name('payments_more');
 });
 
