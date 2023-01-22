@@ -37,7 +37,6 @@ services:
     volumes:
       - .:/var/www/html
     working_dir: /var/www/html
-    command: composer update
 
   payment-node-cli:
     image: node:19
