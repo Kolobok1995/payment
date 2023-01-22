@@ -4,5 +4,5 @@ init:
 	sudo cp .env.example .env;
 	sudo docker-compose up -d;
 	sudo docker-compose run payment-php-fpm php artisan migrate;
-	sudo chmod -R 777 .
+	sudo chmod -R 777 .;
 	sudo docker-compose run payment-node-cli npm run build;
