@@ -40,8 +40,8 @@
                                     </td>
                                 </tr>
                             @endforeach
-                    </tbody>
-                </table>
+                        </tbody>
+                    </table>
                 {{ $orders->links() }}
             </div>
         </div>
